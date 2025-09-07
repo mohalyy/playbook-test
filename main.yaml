@@ -1,6 +1,16 @@
 ---
+- hosts: localhost
+  name: add
+  tasks:
+  - name: Adiciona host dinamicamente ao inventário
+    add_host:
+      name: "{{ ec2_host }}"
+      groups: aws_hosts
+    
 - name: test playbook
-  hosts: all
+  hosts: aws_hosts
+  remote_user: ec2-user
+  become: true
   tasks:
   - name: reboot machine
     ansible.builtin.reboot:
