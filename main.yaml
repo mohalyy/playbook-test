@@ -1,0 +1,7 @@
+---
+- name: test playbook
+  hosts: all
+  tasks:
+  - name: reboot machine
+    ansible.builtin.reboot:
+      reboot_timeout: 300
