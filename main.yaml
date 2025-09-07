@@ -4,8 +4,9 @@
   tasks:
   - name: Adiciona host dinamicamente ao inventário
     add_host:
-      name: "{{ ec2_host }}"
+      name: "{{ item }}"
       groups: aws_hosts
+    loop: "{{ ec2_hosts }}"
     
 - name: test playbook
   hosts: aws_hosts
